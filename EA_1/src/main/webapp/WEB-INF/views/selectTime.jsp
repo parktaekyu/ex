@@ -23,6 +23,7 @@
 		out.println(min);
 		
 		String time =today.substring(8, 12);
+		String aa;
 	%>
 
 	<select name="hour">
