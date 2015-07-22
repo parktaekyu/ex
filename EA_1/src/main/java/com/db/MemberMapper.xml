@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ <!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mem">
+
+
+	<insert id="insert" parameterType="com.dto.MemberDTO">
+		insert into t_member(num, id, pass, name, addr, birth, tel, email )
+		values (member_sql.nextval , #{id},#{pass},#{name},#{addr},#{birth},#{tel},#{email})
+	</insert>
+
+
+	<select id="idcheck" parameterType="String" resultType="int"  >
+		select count(*) from t_member where id = #{id}
+	</select>
+	
+	<select id="login" parameterType="com.dto.MemberDTO" resultType="int"  >
+		select count(*) from t_member where id = #{id} and pass = #{pass}
+	</select>
+	
+	<select id="session" parameterType="com.dto.MemberDTO" resultType="int" >
+		select num from t_member where id = #{id} and pass = #{pass}
+	</select>
+	
+	<select id="memberList"  resultType="com.dto.MemberDTO" >
+		select num, id, pass, name, addr, birth, tel, email  from t_member 
+	</select>
+
+	
+
+</mapper> 
